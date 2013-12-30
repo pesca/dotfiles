@@ -1,0 +1,5 @@
+[user]
+	email = phil@pesca.co
+	name = Philip Pesca
+[core]
+	editor = /Applications/MacVim.app/Contents/MacOS/Vim -gf

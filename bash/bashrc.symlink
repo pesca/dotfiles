@@ -1,0 +1,9 @@
+export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-darwin
+
+alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias mvim="vim -g"
+alias ls="ls -GF"
+
+source ~/.git-completion.bash
+
+export PS1="\n\[\033[1;30m\]\u@\h:\[\033[0;34m\]\W \[\033[1;30m\]\$\[\033[00m\] "

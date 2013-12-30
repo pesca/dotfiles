@@ -1,0 +1,21 @@
+# export PS1="\[\e[01;34m\]\h \[\e[01;36m\]\W \[\e[01;32m\]\u \[\e[01;30m\]\$ \[\e[0m\]"
+# export PS1="\[\e[0;32m\]\W \$ \[\e[0m\]"
+# export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-darwin
+# 
+# alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+# alias ls="ls -GF"
+# 
+# source ~/.git-completion.bash
+
+if [ -f ~/.bashrc ]; then
+	source ~/.bashrc
+fi
+
+##
+# Your previous /Users/Philip/.bash_profile file was backed up as /Users/Philip/.bash_profile.macports-saved_2013-12-12_at_17:16:07
+##
+
+# MacPorts Installer addition on 2013-12-12_at_17:16:07: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
