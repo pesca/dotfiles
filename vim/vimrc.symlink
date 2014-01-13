@@ -1,0 +1,56 @@
+execute pathogen#infect()
+
+
+set formatoptions=crql
+set nowrap
+set number
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set listchars=tab:▸\ ,eol:¬
+set noshowmatch
+set visualbell
+set smarttab
+set smartindent
+set autoindent
+set ignorecase
+set incsearch
+set laststatus=2
+set wildmenu
+set ruler
+set backspace=indent,eol,start
+
+set guifont=Consolas:h13
+
+let &colorcolumn=join(range(81,999),",")
+set textwidth=80
+
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
+" let g:NERDTreeWinPos="right"
+
+syntax on
+
+if has("gui_running")
+	colorscheme codeschool
+else
+	colorscheme crayons
+end
+
+if has("autocmd")
+	set nocompatible
+	filetype on
+	filetype plugin on
+	filetype plugin indent on
+	runtime macros/matchit.vim
+
+	autocmd FileType netrw setlocal cc=0, nolist
+	autocmd FileType ruby,yaml setlocal et
+	autocmd FileType ruby,haml,scss,html,eruby,yaml setlocal ts=2 sts=2 sw=2
+	autocmd FileType * setlocal fo-=o
+	autocmd BufWritePost .vimrc so $MYVIMRC
+end
