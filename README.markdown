@@ -4,5 +4,9 @@ My personal configuration files.
 
 ## Install
 
-To install them, run the installation script `script/install.bash` based on Zach
-Holman's [dotfiles](https://github.com/holman/dotfiles).
+	git clone https://github.com/pesca/dotfiles
+	cd dotfiles
+	script/install.sh
+
+`script/install.sh` is based on Zach Homan's
+[dotfiles](https://github.com/holman/dotfiles).
