@@ -1,3 +1,4 @@
+cd ..
 DOTFILES_ROOT="`pwd`"
 
 link_files () {
