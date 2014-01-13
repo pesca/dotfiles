@@ -1,6 +1,5 @@
 execute pathogen#infect()
 
-filetype plugin indent on
 
 set formatoptions=crql
 set nowrap
@@ -43,8 +42,15 @@ else
 end
 
 if has("autocmd")
+	set nocompatible
 	filetype on
-	autocmd FileType netrw setlocal cc=0
-	autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+	filetype plugin on
+	filetype plugin indent on
+	runtime macros/matchit.vim
+
+	autocmd FileType netrw setlocal cc=0, nolist
+	autocmd FileType ruby,yaml setlocal et
+	autocmd FileType ruby,haml,scss,html,eruby,yaml setlocal ts=2 sts=2 sw=2
 	autocmd FileType * setlocal fo-=o
+	autocmd BufWritePost .vimrc so $MYVIMRC
 end
