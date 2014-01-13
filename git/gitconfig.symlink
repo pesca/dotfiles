@@ -3,3 +3,5 @@
 	name = Philip Pesca
 [core]
 	editor = /Applications/MacVim.app/Contents/MacOS/Vim -gf
+[push]
+	default = simple
