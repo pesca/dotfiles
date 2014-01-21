@@ -6,7 +6,7 @@ error () {
 		printf "error: $1"
 		printf "\n"
 	fi
-	printf "usage: script/install.sh [directory]\n"
+	printf "usage: script/install.sh [ \e[4mdirectory\e[00m ]\n"
 	exit
 }
 
@@ -16,7 +16,7 @@ install () {
 
 	if [ -n "$1" ]
 	then
-		printf "\033[1;32mcreate\033[00m $1\n"
+		printf "\e[1;32mcreate\e[00m $1\n"
 		mkdir $1
 	fi
 
@@ -29,14 +29,14 @@ install () {
 			cp -r $dest $1/${copy#.}.symlink
 		fi
 
-		printf "\033[1;31mremoved\033[00m $dest\n"
+		printf "\e[1;31mremoved\e[00m $dest\n"
 		rm -rf $dest
 	done
 
 	for source in $DF_SOURCE
 	do
 		dest="$HOME/.`basename \"${source%.*}\"`"
-		printf "\033[1;34mlinked\033[00m `basename \"$source\"`\n"
+		printf "\e[1;34mlinked\e[00m `basename \"$source\"`\n"
 		ln -s $source $dest
 	done
 }
