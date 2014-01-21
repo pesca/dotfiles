@@ -8,7 +8,7 @@ fi
 alias mvim="vim -g"
 alias ls="ls -GF"
 
-export PS1="\n\[\033[1;30m\]\u@\h:\[\033[0;34m\]\W \[\033[1;30m\]\$\[\033[00m\] "
+export PS1="\n\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\$\[\e[0m\] "
 
 # Prepend /usr/local/bin for Homebrew
 export PATH=/usr/local/bin:$PATH
