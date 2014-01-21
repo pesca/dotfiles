@@ -1,9 +1,18 @@
-export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-darwin
+# alias foo="ctags -R . $(bundle list --paths)
 
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]
+then
+	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+fi
+
 alias mvim="vim -g"
 alias ls="ls -GF"
 
-source ~/.git-completion.bash
-
 export PS1="\n\[\033[1;30m\]\u@\h:\[\033[0;34m\]\W \[\033[1;30m\]\$\[\033[00m\] "
+
+# Prepend /usr/local/bin for Homebrew
+export PATH=/usr/local/bin:$PATH
+
+# For LaTeX
+export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-darwin
+
