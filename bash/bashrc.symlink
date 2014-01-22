@@ -8,7 +8,16 @@ fi
 alias mvim="vim -g"
 alias ls="ls -GF"
 
-export PS1="\n\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\$\[\e[0m\] "
+# Use emoji in our command prompt if we're on OS X
+if [ "`uname`" == "Darwin" ] && [ $TERM_PROGRAM == "Apple_Terminal" ]
+then
+	# It's a mushroom
+	emoji="🍄  "
+else
+	emoji=""
+fi
+
+export PS1="\n$emoji\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\$\[\e[0m\] "
 
 # Prepend /usr/local/bin for Homebrew
 export PATH=/usr/local/bin:$PATH
