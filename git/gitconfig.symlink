@@ -2,6 +2,8 @@
 	email = phil@pesca.co
 	name = Philip Pesca
 [core]
-	editor = /Applications/MacVim.app/Contents/MacOS/Vim -gf
+	editor = vim
 [push]
 	default = simple
+[color]
+	ui = auto
