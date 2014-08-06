@@ -17,11 +17,11 @@ else
 	emoji=""
 fi
 
-export PS1="\n$emoji\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\$\[\e[0m\] "
+export PS1="\n\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\$\[\e[0m\] "
 
 # Prepend /usr/local/bin for Homebrew
 export PATH=/usr/local/bin:$PATH
 
 # For LaTeX
-export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-darwin
+# export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-darwin
 
