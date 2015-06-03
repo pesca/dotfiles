@@ -19,9 +19,6 @@ fi
 
 export PS1="\n\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\$\[\e[0m\] "
 
-# git completion
-source ~/dotfiles/bash/git-completion.bash
-
 # Prepend /usr/local/bin for Homebrew
 export PATH=/usr/local/bin:$PATH
 
