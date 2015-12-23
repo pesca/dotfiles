@@ -1,5 +1,11 @@
-# alias foo="ctags -R . $(bundle list --paths)
+# .bashrc
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# alias foo="ctags -R . $(bundle list --paths)
 if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]
 then
 	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
