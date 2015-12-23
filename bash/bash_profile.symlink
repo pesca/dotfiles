@@ -9,4 +9,7 @@ fi
 
 PATH=$PATH:$HOME/bin
 
+# Prepend /usr/local/bin for Homebrew
+PATH=/usr/local/bin:$PATH
+
 export PATH
