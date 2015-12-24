@@ -14,5 +14,5 @@ PATH=/usr/local/bin:$PATH
 
 export PATH
 
-export PS1="\n\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\$\[\e[0m\] "
+export PS1="\n\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\\$\[\e[0m\] "
 
