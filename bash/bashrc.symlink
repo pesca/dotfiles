@@ -21,6 +21,3 @@ then
         alias ls="ls --color=always"
 fi
 
-# git completion
-source ~/dotfiles/bash/git-completion.bash
-
