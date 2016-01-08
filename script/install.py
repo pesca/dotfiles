@@ -22,13 +22,13 @@ def install():
         elif os.path.isdir(dest):
             shutil.rmtree(dest)
 
-        print "removed {}".format(dest)
+        print "removed {0}".format(dest)
 
     for source in sources:
         dest = home_dir + "/." + os.path.basename(os.path.splitext(source)[0])
         os.symlink(source, dest)
 
-        print "linked {}".format(source)
+        print "linked {0}".format(source)
 
 
 install()

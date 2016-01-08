@@ -1,9 +1,3 @@
 [user]
 	email = phil@pesca.co
 	name = Philip Pesca
-[core]
-	editor = vim
-[push]
-	default = simple
-[color]
-	ui = auto
