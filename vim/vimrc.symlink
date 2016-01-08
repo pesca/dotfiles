@@ -1,12 +1,11 @@
 execute pathogen#infect()
 
-
-set formatoptions=crql
 set nowrap
 set number
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set expandtab
 set listchars=tab:▸\ ,eol:¬
 set noshowmatch
 set visualbell
@@ -20,7 +19,7 @@ set wildmenu
 set ruler
 set backspace=indent,eol,start
 
-set guifont=Consolas:h13
+set guifont=Monospace\ 9
 
 let &colorcolumn=join(range(81,999),",")
 set textwidth=80
@@ -36,9 +35,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 syntax on
 
 if has("gui_running")
-	colorscheme codeschool
-else
-	colorscheme crayons
+	colorscheme Tomorrow-Night
 end
 
 if has("autocmd")
