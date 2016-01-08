@@ -6,21 +6,20 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # alias foo="ctags -R . $(bundle list --paths)
-if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]
-then
-	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-fi
-
-alias mvim="vim -g"
-alias ls="ls -GF"
 
 # Use emoji in our command prompt if we're on OS X
 if [ "`uname`" == "Darwin" ] && [ $TERM_PROGRAM == "Apple_Terminal" ]
 then
-	# It's a mushroom
-	emoji="🍄  "
-else
-	emoji=""
+        if [ -e "/Applications/MacVim.app/Contents/MacOS/Vim" ]
+        then
+                alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+                alias mvim="vim -g"
+        fi
+
+        alias ls="ls -GF"
+elif [ "`uname`" == "Linux" ]
+then
+        alias ls="ls --color=always"
 fi
 
 # git completion
