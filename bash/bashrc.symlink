@@ -1,4 +1,4 @@
-# .bashrc
+# .bashrck
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -7,10 +7,10 @@ fi
 
 if [ "`uname`" == "Darwin" ]
 then
-	. mac_bashrc
+	. ~/.mac_bashrc
 elif [ "`uname`" == "Linux" ]
 then
-	. linux_bashrc
+	. ~/.linux_bashrc
 fi
 
 # primary prompt
