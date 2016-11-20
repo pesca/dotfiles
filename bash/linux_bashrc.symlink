@@ -116,6 +116,7 @@ fi
 # conveniences
 alias open="xdg-open"
 alias vim="gvim"
+alias p="pu ."
 alias pu="pushd"
 alias po="popd"
 
