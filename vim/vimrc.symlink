@@ -52,7 +52,7 @@ endif
 autocmd BufRead,BufNewFile README,*.markdown,*md setlocal sts=4 sw=4 tw=72 cc=81 et si spell
 
 " personal style for tex
-autocmd BufRead,BufNewFile *.tex setlocal lbr tw=0 briopt+=shift:4 spell
+autocmd BufRead,BufNewFile *.tex setlocal sts=4 sw=4 et lbr tw=0 briopt+=shift:2 spell
 
 " google's style for java
 autocmd BufRead,BufNewFile java setlocal sts=2 sw=2 tw=80 cc=81 nowrap et cin
