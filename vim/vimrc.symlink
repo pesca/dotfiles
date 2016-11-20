@@ -1,53 +1,66 @@
-execute pathogen#infect()
+" options for opening vim sessions
+set sessionoptions=resize,winpos,folds,winsize
 
-set nowrap
-set number
-set tabstop=8
-set softtabstop=8
-set shiftwidth=8
-set expandtab
-set listchars=tab:▸\ ,eol:¬
-set noshowmatch
-set visualbell
-set smarttab
-set smartindent
-set autoindent
-set ignorecase
-set incsearch
-set laststatus=2
-set wildmenu
-set ruler
-set backspace=indent,eol,start
-
-set guifont=Monospace\ 9
-
-let &colorcolumn=join(range(81,999),",")
-set textwidth=80
-
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-
-" let g:NERDTreeWinPos="right"
-
+" syntax highlighting
 syntax on
 
+" smart autoindenting
+set smartindent
+
+" autoindents for us
+set autoindent
+
+" unicode encoding
+set encoding=utf-8
+
+" invisible chars
+set listchars=tab:▸\ ,eol:¬
+
+" ignore case when searching
+set ignorecase
+
+" shows menu when autocompleting in command mode
+set wildmenu
+
+" always show window status
+set laststatus=2
+
+" allows us to hide buffers
+set hidden
+
+" from insert to normal
+imap jj <Esc>
+
+" from insert to command
+imap ff <Esc>:
+
+" no highlight search
+set nohlsearch
+
 if has("gui_running")
-	colorscheme Tomorrow-Night
-end
+	" numbers lines
+	set number
 
-if has("autocmd")
-	set nocompatible
-	filetype on
-	filetype plugin on
-	filetype plugin indent on
-	runtime macros/matchit.vim
+	" our preferred font
+	set guifont=Monospace\ 9
 
-	autocmd FileType netrw setlocal cc=0, nolist
-	autocmd FileType ruby,yaml setlocal et
-	autocmd FileType ruby,haml,scss,html,eruby,yaml setlocal ts=2 sts=2 sw=2
-	autocmd FileType * setlocal fo-=o
-	autocmd BufWritePost .vimrc so $MYVIMRC
-end
+	set lines=40
+	set columns=90
+endif
+
+" sensible README style
+autocmd BufRead,BufNewFile README,*.markdown,*md setlocal sts=4 sw=4 tw=72 cc=81 et si spell
+
+" personal style for tex
+autocmd BufRead,BufNewFile *.tex setlocal lbr tw=0 briopt+=shift:4 spell
+
+" google's style for java
+autocmd BufRead,BufNewFile java setlocal sts=2 sw=2 tw=80 cc=81 nowrap et cin
+
+autocmd BufRead,BufNewFile *.h,*.c setlocal et cin
+
+if has("linebreak")
+	set breakindent
+	set cpoptions+=n
+endif
+
