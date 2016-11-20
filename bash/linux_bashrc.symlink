@@ -117,7 +117,7 @@ fi
 alias open="xdg-open"
 alias vim="gvim"
 alias pu="pushd"
-alias po"popd"
+alias po="popd"
 
 # exchange mapping of ctrl and caps
 setxkbmap -option ctrl:nocaps
