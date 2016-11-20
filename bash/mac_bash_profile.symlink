@@ -1,0 +1,11 @@
+# For Go
+export GOPATH=$HOME/.go-workspace
+export PATH=$PATH:$GOPATH/bin
+
+# For Homebrew
+export PATH=/usr/local/bin:$PATH
+
+# For Go installed by Homebrew
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOROOT/bin
+
