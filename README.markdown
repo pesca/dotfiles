@@ -1,7 +1,7 @@
 # dotfiles
 
 My personal configuration files. To install, run
-`script/install.py` which will overwrite existing configuration files.
+`script/install.py`.
 
 Vim plugins are git submodules. We have to initialize them from the
 same git working directory to install them:
