@@ -112,8 +112,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# primary prompt
-export PS1="\n\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\] \[\e[1m\]\\$\[\e[0m\] "
 
 # conveniences
 alias open="xdg-open"
