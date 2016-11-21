@@ -34,6 +34,9 @@ imap jj <Esc>
 " from insert to command
 imap ff <Esc>:
 
+" write from insert
+imap ww <Esc>:w<Return>
+
 " no highlight search
 set nohlsearch
 
