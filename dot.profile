@@ -1,6 +1,6 @@
 # Philip Pesca
 
-if [[ -f backup/dot.profile ]]; then
-    source backup/dot.profile
+if [[ -f "$(dirname $(readlink $HOME/.profile))/backup/dot.profile" ]]; then
+    source "$(dirname $(readlink $HOME/.profile))/backup/dot.profile"
 fi
 
