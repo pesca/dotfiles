@@ -1,7 +1,7 @@
 # Philip Pesca
 
-if [[ -f backup/dot.bash_profile ]]; then
-    source backup/dot.bash_profile
+if [[ -f "$(dirname $(readlink $HOME/.bash_profile))/backup/dot.bash_profile" ]]; then
+    source "$(dirname $(readlink $HOME/.bash_profile))/backup/dot.bash_profile"
 fi
 
 source ~/.profile
