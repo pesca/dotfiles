@@ -1,5 +1,9 @@
 # Philip Pesca
 
+if [[ -f backup/dot.bashrc ]]; then
+    source backup/dot.bashrc
+fi
+
 if [[ -f /etc/bash_completion ]]; then
     source /etc/bash_completion
 fi

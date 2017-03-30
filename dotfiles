@@ -1,0 +1,56 @@
+#!/bin/bash
+
+err() {
+    errno=$1
+    msg=$2
+
+    echo "error: $msg" >&2
+    exit $errno
+}
+
+if [[ "$0" != "./dotfiles" ]]; then
+    err 1 "please install from the dotfiles directory."
+fi
+
+if [[ -d backup ]]; then
+    rm -d backup > /dev/null 2> /dev/null
+    if [[ $? != 0 ]]; then
+        echo "Backup directory must be empty."
+        echo -n "Empty backup directory [y/n]: "
+        read r
+        if [[ $r = "y" ]]; then
+            echo "Emptying backup directory..."
+            rm -rf backup
+        else
+            echo "Install cancelled..."
+            exit 0
+        fi
+    fi
+    mkdir backup
+else
+    echo "Creating backup directory..."
+    mkdir backup
+fi
+
+for d in dot.*; do
+    path="$HOME/$(echo $d | cut -c4-)"
+    if [[ -e $path ]]; then
+        echo "Backing up $(basename $path)..."
+        cp $path backup/$d
+    fi
+done
+
+for d in dot.*; do
+    path="$HOME/$(echo $d | cut -c4-)"
+    if [[ -f $path || -h $path ]]; then
+        echo "Removing $(basename $path)..."
+        rm $path
+    fi
+done
+
+for d in dot.*; do
+    path="$HOME/$(echo $d | cut -c4-)"
+    echo "Linking $(basename $path)..."
+    ln -s $(pwd)/$d $path
+done
+

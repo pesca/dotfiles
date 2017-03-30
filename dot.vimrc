@@ -1,3 +1,5 @@
+" Philip Pesca
+
 " Colors
 set cursorline
 highlight CursorLine cterm=none
