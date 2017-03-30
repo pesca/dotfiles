@@ -1,5 +1,0 @@
-set completion-ignore-case on
-set show-all-if-ambiguous on
-set completion-display-width 1
-TAB: menu-complete
-
