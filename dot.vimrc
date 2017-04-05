@@ -1,5 +1,8 @@
 " Philip Pesca
 
+" Encoding
+set encoding=utf-8
+
 " Colors
 set cursorline
 highlight CursorLine cterm=none
