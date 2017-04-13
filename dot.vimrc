@@ -45,14 +45,7 @@ set linebreak
 set showmatch
 set ignorecase
 set incsearch
-set hlsearch
-
-" Shortcuts
-nnoremap j gj
-nnoremap k gk
-nnoremap $ g$
-nnoremap 0 g0
-imap jj <Esc>
+set nohlsearch
 
 autocmd filetype tex setlocal sts=4 sw=4 tw=0 cc=0
 autocmd filetype c setlocal sts=8 sw=8
@@ -60,4 +53,11 @@ autocmd filetype html,css setlocal sts=2 sw=2 tw=0 cc=0
 autocmd filetype ruby,js setlocal sts=2 sw=2
 autocmd filetype sh setlocal sts=4 sw=4
 autocmd filetype gitcommit setlocal tw=72 cc=73
+autocmd filetype cpp setlocal sts=4 sw=4
 
+" Shortcuts
+nnoremap j gj
+nnoremap k gk
+nnoremap $ g$
+nnoremap 0 g0
+imap jj <Esc>
