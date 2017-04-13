@@ -22,8 +22,9 @@ elif [[ $(uname) = 'Linux' ]]; then
     alias la='ls -alF --color=auto'
     alias ls='ls -F --color=auto'
 
-    which xdg-open > /dev/null 2> /dev/null && alias open='xdg-open'
+    which xdg-open &> /dev/null && alias open='xdg-open'
 fi
 
 alias grep='grep --color=auto'
+alias bc='bc -l'
 
