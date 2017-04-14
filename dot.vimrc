@@ -1,5 +1,10 @@
 " Philip Pesca
 
+" Fonts
+if has("gui_macvim")
+    set guifont=Consolas:h13
+endif
+
 " Colors
 set cursorline
 highlight CursorLine cterm=none
