@@ -8,7 +8,7 @@ if [[ -f /etc/bash_completion ]]; then
     source /etc/bash_completion
 fi
 
-PS1="\n\[\e[1m\]\u@\h:\[\e[0;34m\]\w\[\e[0m\]\[\e[1m\]\\$\[\e[0m\] "
+PS1="\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\]\[\e[1m\]\\$\[\e[0m\] "
 
 export EDITOR=vim
 export HISTCONTROL=ignoredups
