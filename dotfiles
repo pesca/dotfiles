@@ -1,48 +1,114 @@
 #!/bin/bash
-# Usage: dotfiles
-# Philip Pesca
+
+USAGE="usage: dotfiles [--help] <command> [<args>]
+
+commands:
+  backup <dir>      backups current dotfiles to dir
+  install [--copy]  installs by linking or copying dotfiles
+  remove <dotfile>  remove dotfile"
 
 err() {
-    errno=$1
-    msg=$2
+    ERRNO=$1
+    MESSAGE=$2
 
-    echo "error: $msg" >&2
-    exit $errno
+    # redirect error message from stdout to stderr
+    echo "error: $MESSAGE" >&2
+    exit $ERRNO
+}
+
+backup() {
+    DIR=$1
+
+    # check if directory dir exists
+    if [[ -d $DIR ]]; then
+        # short for "rm -d $DIR > /dev/null 2> /dev/null"
+        rm -d $DIR &> /dev/null
+        if [[ $? != 0 ]]; then
+            err 2 "backup directory must be empty."
+        fi
+    else
+        echo "Creating backup directory..."
+        mkdir $DIR
+    fi
+
+    # backup corresponding dotfiles
+    for DOTFILE in dot.*; do
+        FILEPATH="$HOME/$(echo $DOTFILE | cut -c4-)"
+        if [[ -e $FILEPATH ]]; then
+            echo "Backing up $(basename $FILEPATH)..."
+            cp $FILEPATH $DIR/$DOTFILE
+        fi
+    done
+}
+
+install() {
+    VERB="Linking"
+    COMMAND="ln -s"
+    if [[ $# = 1 ]]; then
+        if [[ $1 = "--copy" ]]; then
+            VERB="Copying"
+            COMMAND="cp"
+        else
+            echo "usage: dotfiles install [--copy]"
+            exit -1
+        fi
+    fi
+
+    for DOTFILE in dot.*; do
+        FILEPATH="$HOME/$(echo $DOTFILE | cut -c4-)"
+        if [[ -f $FILEPATH || -h $FILEPATH ]]; then
+            echo "Removing $(basename $FILEPATH)..."
+            rm $FILEPATH
+        fi
+    done
+
+    for DOTFILE in dot.*; do
+        FILEPATH="$HOME/$(echo $DOTFILE | cut -c4-)"
+        echo "$VERB $(basename $FILEPATH)..."
+        $COMMAND $(pwd)/$DOTFILE $FILEPATH
+    done
+}
+
+remove() {
+    DOTFILE=$1
+    FILEPATH="$HOME/$(echo $DOTFILE | cut -c4-)"
+
+    rm $DOTFILE
+    rm $FILEPATH
 }
 
 if [[ "$0" != "./dotfiles" ]]; then
-    err 1 "please install from the dotfiles directory."
+    err 1 "must be called from the dotfiles directory."
 fi
 
-if [[ -d backup ]]; then
-    rm -d backup > /dev/null 2> /dev/null
-    if [[ $? != 0 ]]; then
-        err 2 "backup directory must be empty."
+if [[ "$1" = "--help" ]]; then
+    if [[ "$2" = "backup" ]]; then
+        echo "usage: dotfiles backup <dir>"
+    elif [[ "$2" = "install" ]]; then
+        echo "usage: dotfiles install [--copy]"
+    elif [[ "$2" = "remove" ]]; then
+        echo "usage: dotfiles remove <dotfile>"
+    else
+        echo "$USAGE"
+    fi
+elif [[ "$1" = "backup" ]]; then
+    if [[ $# = 1 ]]; then
+        echo "usage: dotfiles backup <dir>"
+        exit -1
+    else
+        backup $2
+    fi
+elif [[ "$1" = "install" ]]; then
+    install $2
+elif [[ "$1" = "remove" ]]; then
+    if [[ $# = 1 ]]; then
+        echo "usage: dotfiles remove <dotfile>"
+        exit -1
+    else
+        remove $2
     fi
 else
-    echo "Creating backup directory..."
-    mkdir backup
+    echo "$USAGE"
+    exit -1
 fi
-
-for d in dot.*; do
-    path="$HOME/$(echo $d | cut -c4-)"
-    if [[ -e $path ]]; then
-        echo "Backing up $(basename $path)..."
-        cp $path backup/$d
-    fi
-done
-
-for d in dot.*; do
-    path="$HOME/$(echo $d | cut -c4-)"
-    if [[ -f $path || -h $path ]]; then
-        echo "Removing $(basename $path)..."
-        rm $path
-    fi
-done
-
-for d in dot.*; do
-    path="$HOME/$(echo $d | cut -c4-)"
-    echo "Linking $(basename $path)..."
-    ln -s $(pwd)/$d $path
-done
 

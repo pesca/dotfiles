@@ -1,6 +1,4 @@
-# Philip Pesca
+# ~/.profile is executed by the command interpreter for login shells.
 
-if [[ -f "$(dirname $(readlink $HOME/.profile))/backup/dot.profile" ]]; then
-    source "$(dirname $(readlink $HOME/.profile))/backup/dot.profile"
-fi
-
+. "$HOME/.bashrc"
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
