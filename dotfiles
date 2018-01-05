@@ -1,114 +1,102 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-USAGE="usage: dotfiles [--help] <command> [<args>]
+usage="usage:
+  dotfiles --help
+  dotfiles <command> [--help] [<args>]
 
 commands:
   backup <dir>      backups current dotfiles to dir
   install [--copy]  installs by linking or copying dotfiles
   remove <dotfile>  remove dotfile"
 
-err() {
-    ERRNO=$1
-    MESSAGE=$2
-
-    # redirect error message from stdout to stderr
-    echo "error: $MESSAGE" >&2
-    exit $ERRNO
+die () {
+    echo "$1"
+    exit 0
 }
 
-backup() {
-    DIR=$1
+err () {
+    echo "$1" >&2
+    exit 1
+}
 
-    # check if directory dir exists
-    if [[ -d $DIR ]]; then
-        # short for "rm -d $DIR > /dev/null 2> /dev/null"
-        rm -d $DIR &> /dev/null
-        if [[ $? != 0 ]]; then
-            err 2 "backup directory must be empty."
-        fi
-    else
+backup () {
+    shift
+    [[ "$1" != "--help" ]] || die "usage: dotfiles backup <dir>"
+
+    dir=$1
+
+    if [[ ! -d $dir ]]; then
         echo "Creating backup directory..."
-        mkdir $DIR
+        mkdir "$dir"
     fi
 
     # backup corresponding dotfiles
-    for DOTFILE in dot.*; do
-        FILEPATH="$HOME/$(echo $DOTFILE | cut -c4-)"
-        if [[ -e $FILEPATH ]]; then
-            echo "Backing up $(basename $FILEPATH)..."
-            cp $FILEPATH $DIR/$DOTFILE
+    for dotfile in dot.*; do
+        path="$HOME/$(echo $dotfile | cut -c4-)"
+        if [[ -e $path ]]; then
+            echo "Backing up $(basename $path)..."
+            cp $path $dir/$dotfile
         fi
     done
 }
 
-install() {
-    VERB="Linking"
-    COMMAND="ln -s"
+install () {
+    shift
+    [[ "$1" != "--help" ]] || die "usage: dotfiles install [--copy]"
+
+    verb="Linking"
+    run="ln -s"
+
     if [[ $# = 1 ]]; then
         if [[ $1 = "--copy" ]]; then
-            VERB="Copying"
-            COMMAND="cp"
+            verb="Coppying"
+            run="cp"
         else
-            echo "usage: dotfiles install [--copy]"
+            err "usage: dotfiles install [--copy]"
             exit -1
         fi
     fi
 
-    for DOTFILE in dot.*; do
-        FILEPATH="$HOME/$(echo $DOTFILE | cut -c4-)"
-        if [[ -f $FILEPATH || -h $FILEPATH ]]; then
-            echo "Removing $(basename $FILEPATH)..."
-            rm $FILEPATH
+    for dotfile in dot.*; do
+        path="$HOME/$(echo $dotfile | cut -c4-)"
+        if [[ -f $path || -h $path ]]; then
+            echo "Removing $(basename $path)..."
+            rm $path
         fi
     done
 
-    for DOTFILE in dot.*; do
-        FILEPATH="$HOME/$(echo $DOTFILE | cut -c4-)"
-        echo "$VERB $(basename $FILEPATH)..."
-        $COMMAND $(pwd)/$DOTFILE $FILEPATH
+    for dotfile in dot.*; do
+        path="$HOME/$(echo $dotfile | cut -c4-)"
+        echo "$verb $(basename $path)..."
+        $run $(pwd)/$dotfile $path
     done
 }
 
-remove() {
-    DOTFILE=$1
-    FILEPATH="$HOME/$(echo $DOTFILE | cut -c4-)"
+remove () {
+    shift
+    [[ "$1" != "--help" ]] || die "usage: dotfiles remove <dotfile>"
 
-    rm $DOTFILE
-    rm $FILEPATH
+    dotfile=$1
+    path="$HOME/$(echo $dotfile | cut -c4-)"
+
+    rm "$dotfile"
+    rm "$path"
 }
 
-if [[ "$0" != "./dotfiles" ]]; then
-    err 1 "must be called from the dotfiles directory."
-fi
+main () {
+    [[ "$0" = "./dotfiles" ]] || err "error: install from dotfiles dir."
 
-if [[ "$1" = "--help" ]]; then
-    if [[ "$2" = "backup" ]]; then
-        echo "usage: dotfiles backup <dir>"
-    elif [[ "$2" = "install" ]]; then
-        echo "usage: dotfiles install [--copy]"
-    elif [[ "$2" = "remove" ]]; then
-        echo "usage: dotfiles remove <dotfile>"
+    if   [[ "$1" = "--help"  ]]; then
+        die "$usage"
+    elif [[ "$1" = "backup"  ]]; then
+        backup "$@"
+    elif [[ "$1" = "install" ]]; then
+        install "$@"
+    elif [[ "$1" = "remove"  ]]; then
+        remove "$@"
     else
-        echo "$USAGE"
+        err "$usage"
     fi
-elif [[ "$1" = "backup" ]]; then
-    if [[ $# = 1 ]]; then
-        echo "usage: dotfiles backup <dir>"
-        exit -1
-    else
-        backup $2
-    fi
-elif [[ "$1" = "install" ]]; then
-    install $2
-elif [[ "$1" = "remove" ]]; then
-    if [[ $# = 1 ]]; then
-        echo "usage: dotfiles remove <dotfile>"
-        exit -1
-    else
-        remove $2
-    fi
-else
-    echo "$USAGE"
-    exit -1
-fi
+}
 
+main "$@"

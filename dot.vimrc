@@ -7,9 +7,9 @@ endif
 set encoding=utf-8
 
 " Colors
-set cursorline
-highlight CursorLine cterm=none
-highlight CursorLineNR ctermfg=blue
+" set cursorline
+" highlight CursorLine cterm=none
+" highlight CursorLineNR ctermfg=blue
 syntax on
 
 " Spaces and tabs
@@ -38,7 +38,7 @@ set listchars=tab:▸\ ,eol:¬
 
 " Formatting
 set textwidth=80
-set colorcolumn=81
+" set colorcolumn=81
 
 " Text columns
 set breakindent
@@ -53,8 +53,8 @@ set nohlsearch
 autocmd filetype tex setlocal sts=4 sw=4 tw=0 cc=0
 autocmd filetype c setlocal sts=8 sw=8
 autocmd filetype html,css setlocal sts=2 sw=2 tw=0 cc=0
-autocmd filetype ruby,js setlocal sts=2 sw=2
+autocmd filetype json,javascript setlocal et sts=2 sw=2 tw=0 cc=0
+autocmd filetype ruby setlocal sts=2 sw=2
 autocmd filetype sh setlocal sts=4 sw=4
 autocmd filetype gitcommit setlocal tw=72 cc=73
 autocmd filetype cpp setlocal sts=4 sw=4
-

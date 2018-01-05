@@ -3,6 +3,7 @@
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
+EDITOR=vim
 
 shopt -s histappend
 shopt -s checkwinsize
@@ -12,9 +13,6 @@ if [[ -f /etc/bash_completion ]]; then
 fi
 
 PS1="\[\e[1m\]\u@\h:\[\e[0;34m\]\W\[\e[0m\]\[\e[1m\]\\$\[\e[0m\] "
-
-export EDITOR=vim
-export HISTCONTROL=ignoredups
 
 if [[ $(uname) = 'Darwin' ]]; then
     alias ll='ls -lFG'
@@ -31,4 +29,3 @@ fi
 
 alias grep='grep --color=auto'
 alias bc='bc -l'
-
