@@ -15,7 +15,8 @@ syntax on
 " Spaces and tabs
 set expandtab
 set autoindent
-set tabstop=4
+set tabstop=8
+set softtabstop=4
 set shiftwidth=4
 filetype plugin indent on
 
@@ -58,3 +59,4 @@ autocmd filetype ruby setlocal sts=2 sw=2
 autocmd filetype sh setlocal sts=4 sw=4
 autocmd filetype gitcommit setlocal tw=72 cc=73
 autocmd filetype cpp setlocal sts=4 sw=4
+autocmd filetype dockerfile setlocal noet
