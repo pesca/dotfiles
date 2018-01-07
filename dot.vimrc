@@ -52,11 +52,11 @@ set incsearch
 set nohlsearch
 
 autocmd filetype tex setlocal sts=4 sw=4 tw=0 cc=0
-autocmd filetype c setlocal sts=8 sw=8
+autocmd filetype c setlocal noet sts=8 sw=8
 autocmd filetype html,css setlocal sts=2 sw=2 tw=0 cc=0
 autocmd filetype json,javascript setlocal et sts=2 sw=2 tw=0 cc=0
 autocmd filetype ruby setlocal sts=2 sw=2
 autocmd filetype sh setlocal sts=4 sw=4
 autocmd filetype gitcommit setlocal tw=72 cc=73
 autocmd filetype cpp setlocal sts=4 sw=4
-autocmd filetype dockerfile setlocal noet
+autocmd filetype dockerfile setlocal noet sts=8 sw=8 ts=8
