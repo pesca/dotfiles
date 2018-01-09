@@ -193,4 +193,4 @@ autocmd filetype cpp setlocal et sts=4 sw=4 tw=80 cc=81
 autocmd filetype dockerfile setlocal noet sts=8 sw=8 ts=8 tw=0 cc=0
 
 " Personal Markdown coding style
-autocmd filetype markdown setlocal spell et sts=2 sw=22 tw=80 cc=81
+autocmd filetype markdown setlocal spell et sts=2 sw=2 tw=80 cc=81
