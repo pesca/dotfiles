@@ -160,6 +160,9 @@ set showmatch
 set incsearch
 set nohlsearch
 
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
 " Personal LaTeX coding style
 autocmd FileType tex setlocal noet sts=4 sw=4 tw=0 cc=0
 
