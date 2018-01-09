@@ -159,11 +159,11 @@ set incsearch
 set nohlsearch
 
 " Personal LaTeX coding style
-autocmd filetype tex setlocal noet ts=4 sts=4 sw=4 tw=0 cc=0
+autocmd filetype tex setlocal noet sts=4 sw=4 tw=0 cc=0
 
 " Adopt Linux kernel coding style
 " URL: https://www.kernel.org/doc/Documentation/process/coding-style.rst
-autocmd filetype c setlocal noet ts=8 sts=8 sw=8 tw=80 cc=81
+autocmd filetype c setlocal noet sts=8 sw=8 tw=80 cc=81
 
 " Google HTML/CSS style guide
 " URL: https://google.github.io/styleguide/htmlcssguide.html
@@ -190,7 +190,29 @@ autocmd filetype gitcommit setlocal spell et sts=2 sw=2 tw=72 cc=73
 autocmd filetype cpp setlocal et sts=4 sw=4 tw=80 cc=81
 
 " Coding conventions found in official Docker images
-autocmd filetype dockerfile setlocal noet sts=8 sw=8 ts=8 tw=0 cc=0
+autocmd filetype dockerfile setlocal noet sts=8 sw=8 tw=0 cc=0
 
 " Personal Markdown coding style
 autocmd filetype markdown setlocal spell et sts=2 sw=2 tw=80 cc=81
+
+" Personal VHDL and SystemVerilog style
+autocmd filetype verilog,vhdl setlocal et sts=4 sw=4 tw=80 cc=81
+
+" OCaml Programming Guidelines
+" URL: https://ocaml.org/learn/tutorials/guidelines.html
+autocmd filetype ocaml setlocal noet sts=8 sw=8 tw=80 cc=81
+
+" Style Guide for Python Code
+" URL: https://www.python.org/dev/peps/pep-0008/
+autocmd filetype python setlocal et sts=4 sw=4 tw=79 cc=73,80
+
+" Personal Prolog coding style
+autocmd filetype prolog setlocal et sts=4 sw=4 tw=80 cc=81
+
+" Code Conventions for the Java Programming Language
+" URL: http://web.archive.org/web/20090904195252/http://java.sun.com/docs/codeconv/index.html
+autocmd filetype java setlocal et sts=4 sw=4 tw=80 cc=81
+
+" MediaWiki coding conventions
+" URL: https://www.mediawiki.org/wiki/Manual:Coding_conventions
+autocmd filetype php setlocal noet sts=4 sw=4 tw=80 cc=81
