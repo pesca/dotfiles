@@ -183,7 +183,7 @@ autocmd filetype sh setlocal et sts=4 sw=4 tw=80 cc=81
 
 " tpope: A Note About Git Commit Messages
 " URL: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-autocmd filetype gitcommit setlocal et sts=2 sw=2 tw=72 cc=73
+autocmd filetype gitcommit setlocal spell et sts=2 sw=2 tw=72 cc=73
 
 " Personal C++ coding style
 " URL: http://isocpp.github.io/CppCoreGuidelines
@@ -193,4 +193,4 @@ autocmd filetype cpp setlocal et sts=4 sw=4 tw=80 cc=81
 autocmd filetype dockerfile setlocal noet sts=8 sw=8 ts=8 tw=0 cc=0
 
 " Personal Markdown coding style
-autocmd filetype markdown setlocal et sts=2 sw=22 tw=80 cc=81
+autocmd filetype markdown setlocal spell et sts=2 sw=22 tw=80 cc=81
