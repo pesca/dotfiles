@@ -152,67 +152,72 @@ set encoding=utf-8
 set sessionoptions=resize,winpos,folds,winsize
 set lazyredraw
 set listchars=tab:▸\ ,eol:¬
-set breakindent
+if exists("&breakindent")
+    set breakindent
+endif
 set linebreak
 set showmatch
 set incsearch
 set nohlsearch
 
 " Personal LaTeX coding style
-autocmd filetype tex setlocal noet sts=4 sw=4 tw=0 cc=0
+autocmd FileType tex setlocal noet sts=4 sw=4 tw=0 cc=0
 
 " Adopt Linux kernel coding style
 " URL: https://www.kernel.org/doc/Documentation/process/coding-style.rst
-autocmd filetype c setlocal noet sts=8 sw=8 tw=80 cc=81
+autocmd FileType c setlocal noet sts=8 sw=8 tw=80 cc=81
 
 " Google HTML/CSS style guide
 " URL: https://google.github.io/styleguide/htmlcssguide.html
-autocmd filetype html,css setlocal et sts=2 sw=2 tw=0 cc=0
+autocmd FileType html,css setlocal et sts=2 sw=2 tw=0 cc=0
 
 " Airbnb JavaScript style guide
 " URL: https://github.com/airbnb/javascript
-autocmd filetype javascript setlocal et sts=2 sw=2 tw=100 cc=101
+autocmd FileType javascript setlocal et sts=2 sw=2 tw=100 cc=101
 
 " Ruby on Rails coding conventions
 " URL: http://guides.rubyonrails.org/contributing_to_ruby_on_rails.html
-autocmd filetype ruby setlocal et sts=2 sw=2 tw=0 cc=0
+autocmd FileType ruby setlocal et sts=2 sw=2 tw=0 cc=0
 
 " Coding conventions found in POSIX shell document
 " URL: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
-autocmd filetype sh setlocal et sts=4 sw=4 tw=80 cc=81
+autocmd FileType sh setlocal et sts=4 sw=4 tw=80 cc=81
 
 " tpope: A Note About Git Commit Messages
 " URL: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-autocmd filetype gitcommit setlocal spell et sts=2 sw=2 tw=72 cc=73
+autocmd FileType gitcommit setlocal spell et sts=2 sw=2 tw=72 cc=73
 
 " Personal C++ coding style
 " URL: http://isocpp.github.io/CppCoreGuidelines
-autocmd filetype cpp setlocal et sts=4 sw=4 tw=80 cc=81
+autocmd FileType cpp setlocal et sts=4 sw=4 tw=80 cc=81
 
 " Coding conventions found in official Docker images
-autocmd filetype dockerfile setlocal noet sts=8 sw=8 tw=0 cc=0
+autocmd FileType dockerfile setlocal noet sts=8 sw=8 tw=0 cc=0
 
 " Personal Markdown coding style
-autocmd filetype markdown setlocal spell et sts=2 sw=2 tw=80 cc=81
+autocmd FileType markdown setlocal spell et sts=2 sw=2 tw=80 cc=81
 
 " Personal VHDL and SystemVerilog style
-autocmd filetype verilog,vhdl setlocal et sts=4 sw=4 tw=80 cc=81
+autocmd FileType verilog,vhdl setlocal et sts=4 sw=4 tw=80 cc=81
 
 " OCaml Programming Guidelines
 " URL: https://ocaml.org/learn/tutorials/guidelines.html
-autocmd filetype ocaml setlocal noet sts=8 sw=8 tw=80 cc=81
+autocmd FileType ocaml setlocal noet sts=8 sw=8 tw=80 cc=81
 
 " Style Guide for Python Code
 " URL: https://www.python.org/dev/peps/pep-0008/
-autocmd filetype python setlocal et sts=4 sw=4 tw=79 cc=73,80
+autocmd FileType python setlocal et sts=4 sw=4 tw=79 cc=73,80
 
 " Personal Prolog coding style
-autocmd filetype prolog setlocal et sts=4 sw=4 tw=80 cc=81
+autocmd FileType prolog setlocal et sts=4 sw=4 tw=80 cc=81
 
 " Code Conventions for the Java Programming Language
 " URL: http://web.archive.org/web/20090904195252/http://java.sun.com/docs/codeconv/index.html
-autocmd filetype java setlocal et sts=4 sw=4 tw=80 cc=81
+autocmd FileType java setlocal et sts=4 sw=4 tw=80 cc=81
 
 " MediaWiki coding conventions
 " URL: https://www.mediawiki.org/wiki/Manual:Coding_conventions
-autocmd filetype php setlocal noet sts=4 sw=4 tw=80 cc=81
+autocmd FileType php setlocal noet sts=4 sw=4 tw=80 cc=81
+
+" Haskell
+autocmd FileType haskell setlocal et sts=2 tw=80 cc=81
