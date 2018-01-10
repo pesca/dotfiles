@@ -182,9 +182,8 @@ autocmd FileType javascript setlocal et sts=2 sw=2 tw=100 cc=101
 " URL: http://guides.rubyonrails.org/contributing_to_ruby_on_rails.html
 autocmd FileType ruby setlocal et sts=2 sw=2 tw=0 cc=0
 
-" Coding conventions found in POSIX shell document
-" URL: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html
-autocmd FileType sh setlocal et sts=4 sw=4 tw=80 cc=81
+" Personal bash coding style
+autocmd FileType sh setlocal noet sts=8 sw=8 tw=80 cc=81
 
 " tpope: A Note About Git Commit Messages
 " URL: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
