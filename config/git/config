@@ -1,0 +1,9 @@
+# git-config(1)
+
+[user]
+	name = Philip Pesca
+	email = ppesca@ucsd.edu
+
+[core]
+	askpass = 
+
